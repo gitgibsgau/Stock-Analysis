@@ -1,0 +1,24 @@
+{
+  "name": "stocks-analyst",
+  "version": "1.0.0",
+  "description": "Stocks",
+  "main": "server.js",
+  "private": true,
+  "dependencies": {
+    "cheerio": "latest",
+    "compression": "^1.6.2",
+    "express": "^4.14.0",
+    "request": "^2.79.0",
+    "table-scraper": "0.0.2"
+  },
+  "engines": {
+    "node": "4.2.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "nimish unde",
+  "license": "ISC"
+}

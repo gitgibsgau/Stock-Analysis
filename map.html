@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>World Map</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="/scripts/highmaps.js"></script>
+	<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/mapdata/custom/world-highres3.js"></script>
+	<script src="https://code.highcharts.com/maps/js/themes/grid-light.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="/css/map.css">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Exo|Handlee" rel="stylesheet">
+
+</head>
+<body>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="/scripts/map.js"></script>
+	<button id="back" class="btn btn-default">back <<</button>
+	<div id="container"></div>
+	<div id="details">
+		<table id="map_table" class="table table-hover">
+			<tr>
+				<th>Country</th>
+				<th>Percent Change</th>
+				<th>Change</th>
+				<th>Stock index value</th>
+			</tr>
+		</table>
+	</div>
+    <!-- footer -->
+    <div class="footer_page" id="footer_1"><br>
+        <p style="text-align:center;">&copy; 2016 Stock Analyst</p>
+    </div>
+
+	<script type="text/javascript">
+
+	//back button
+	$(document).ready(function(){
+		$('#back').click(function(){
+			parent.history.back();
+			return false;
+		});
+	});
+
+</script>
+</body>
+</html>

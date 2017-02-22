@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta name="description" content="Stock Analyst offers a universal platform to all the stock market traders out there by providing accurate and real time trading information">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <!-- <meta name=”description” content= "Stock Analyst offers a universal platform to all the stock market traders out there by providing accurate and real time trading information"> -->
+
+        <title>
+            Stock Analyst - Home
+        </title>
+
+        <link rel="stylesheet" href="/css/style.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Exo|Handlee" rel="stylesheet">
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://code.highcharts.com/stock/highstock.js"></script>
+        <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/stock/js/themes/dark-unica.js"></script><!-- dark-unica,grid-light -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/javascript" data-bablic="584d4134bf556ace3d1ca2b3" data-bablic-m="['1481457993','en','en',1,['zh_cn'],0,0,0,0,0,0,0,0,[],'stocks-analyst.herokuapp.com/',[],['_v',2]]" src="//cdn2.bablic.com/js/bablic.3.5.js"></script>
+
+    </head>
+
+    <body>
+
+        <!-- Stock Analyst Heading -->
+        <div class="heading">
+            <h1 class="stockanalystheading">Stock Analyst</h1>
+        </div>     
+        <!-- Options (Navigation bar) -->
+        <ol class="breadcrumb">
+            <li><a href="#" id="home_button" style="text-decoration:none" class="test">Home</a></li>
+            <li><a href="#" id="leaderboard_button" style="text-decoration:none" class="test">Leader Board</a></li>
+            <li><a href="#" id="currency_button" style="text-decoration:none" class="test">Currency</a></li>
+            <li><a href="#" id="stockmaps_button" style="text-decoration:none" class="test">Stock Maps</a></li>
+            <li><a href="#" id="contact_button" style="text-decoration:none" class="test">Team Details</a></li>
+        </ol>
+
+        <!-- homescreen div begins -->
+
+        <div class="searchBody" id="main"> <!-- id ="main" -->
+            <section class="searchEngine">
+
+               <input list="company" name="company" placeholder="Enter company name - Twitter" id="search" required autofocus="" />
+               <!-- List of Top 50 American Largest Companies-->
+               <datalist id="company">
+                <option value="Apple" data-companyCode="AAPL">AAPL</option>
+                <option value="Alphabet Inc." data-companyCode="GOOG">GOOG</option>
+                <option value="Microsoft" data-companyCode="MSFT">MSFT</option>
+                <option value="Berkshire Hathaway" data-companyCode="BRK-A">BRK-A</option>
+                <option value="Exxon Mobil" data-companyCode="XOM">XOM</option>
+                <option value="Amazon" data-companyCode="AMZN">AMZN</option>
+                <option value="Facebook" data-companyCode="FB">FB</option>
+                <option value="Johnson & Johnson" data-companyCode="JNJ">JNJ</option>
+                <option value="JPMorgan Chase" data-companyCode="JPM">JPM</option>
+                <option value="General Electric" data-companyCode="GE">JNJ</option>
+                <option value="Wells Fargo" data-companyCode="WFC">WFC</option>
+                <option value="AT&T" data-companyCode="T">T</option>
+                <option value="Procter & Gamble" data-companyCode="PG">PG</option>
+                <option value="Wal-Mart" data-companyCode="WMT">WMT</option>
+                <option value="Bank of America" data-companyCode="BAC">BAC</option>
+                <option value="Chevron" data-companyCode="CVX">CVX</option>
+                <option value="Verizon Communications" data-companyCode="VZ">VZ</option>
+                <option value="Pfizer" data-companyCode="PFE">PFE</option>
+                <option value="Coca-Cola" data-companyCode="KO">KO</option>
+                <option value="Merck" data-companyCode="MRK">MRK</option>
+                <option value="Comcast" data-companyCode="CMCSA">CMCSA</option>
+                <option value="Oracle" data-companyCode="ORCL">ORCL</option>
+                <option value="Intel" data-companyCode="INTC">INTC</option>
+                <option value="Visa" data-companyCode="V">V</option>
+                <option value="Citigroup" data-companyCode="C">C</option>
+                <option value="Disney" data-companyCode="DIS">DIS</option>
+                <option value="Home Depot" data-companyCode="HD">HD</option>
+                <option value="IBM" data-companyCode="IBM">IBM</option>
+                <option value="UnitedHealth Group" data-companyCode="UNH">UNH</option>
+                <option value="Cisco Systems" data-companyCode="CSCO">CSCO</option>
+                <option value="PepsiCo" data-companyCode="PEP">PEP</option>
+                <option value="Philip Morris International" data-companyCode="PM">PM</option>
+                <option value="Altria" data-companyCode="MO">MO</option>
+                <option value="Schlumberger" data-companyCode="SLB">SLB</option>
+                <option value="Mastercard Inc." data-companyCode="MA">MA</option>
+                <option value="Amgen" data-companyCode="AMGN">AMGN</option>
+                <option value="3M" data-companyCode="MMM">MMM</option>
+                <option value="United Parcel Service" data-companyCode="UPS">UPS</option>
+                <option value="Medtronic" data-companyCode="MDT">MDT</option>
+                <option value="QUALCOMM" data-companyCode="QCOM">QCOM</option>
+                <option value="Kraft Heinz Co" data-companyCode="KHC">KHC</option>
+                <option value="McDonald's" data-companyCode="MCD">MCD</option>
+                <option value="AbbVie Inc." data-companyCode="ABBV">ABBV</option>
+                <option value="Gilead Sciences" data-companyCode="GILD">GILD</option>
+                <option value="Bristol-Myers Squibb" data-companyCode="BMY">BMY</option>
+                <option value="Boeing" data-companyCode="BA">BA</option>
+                <option value="Celgene" data-companyCode="CELG">CELG</option>
+                <option value="Goldman Sachs" data-companyCode="GS">GS</option>
+                <option value="Walgreens Boots Alliance" data-companyCode="WBA">WBA</option>
+                <option value="United Technologies" data-companyCode="UTX">UTX</option>
+                <option value="Twitter Inc." data-companyCode="TWTR">TWTR</option>
+
+                </datalist>
+                <button type="button" class="btn btn-default" id="search_button">
+                    Search
+                </button>
+            </section>
+
+    </div>
+
+
+    <section id="homepage">
+        <!-- <video autoplay="autoplay" loop
+        style=" -webkit-filter:brightness(0.4);  -moz-filter: brightness(0.4); -o-filter: brightness(0.4); -ms-filter: brightness(0.4); filter: brightness(0.4); "
+        poster="">
+            <source src="http://ak1.picdn.net/shutterstock/videos/4548131/preview/stock-footage-stock-market-trend-of-animation.mp4"
+            type="video/mp4">
+        </video> -->
+
+    <p class="desc">Trending stock charts for Apple, Google and Intel</p>
+    <div id="aaplContainer" class="charts"></div>
+    <div id="googlContainer" class="charts"></div>
+    <div id="intelContainer" class="charts"></div>
+
+    </section>
+
+    <!-- footer -->
+    <div class="footer_page" id="footer_1"><br>
+        <p style="text-align:center;">&copy; 2016 Stock Analyst</p>
+    </div>
+    <!-- homescreen div ends -->
+
+    <!-- Div holding searched chart begins -->
+    <div id="newContainer">
+        <button type="button" class="btn btn-default" id="liveChartButton">Watch Live</button>
+        <div class="main" id="searchChart"></div>
+
+        <!-- Modal content -->
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close" id="close_cross">x</span>
+            <p>Live data</p>
+            <div id="liveChartDisplay" style="height:500px;width:100%"></div>
+        </div>
+    </div>
+    <!-- footer -->
+    <div class="footer_page" id="footer_1"><br>
+        <p style="text-align:center;">&copy; 2016 Stock Analyst</p>
+    </div>
+    </div>
+    <!-- Div holding searched chart ends -->
+
+    <!-- leader board div begins-->
+    <div id="leader_board">
+       <table class="table table-hover leaderBoardTable">
+           <tr  class="leaderBoardStyle">
+            <th colspan="4" class="logo">Leader Board</th>
+        </tr>
+        <tr  class="leaderBoardStyle">
+            <td><img id="apple" src="/image/apple.jpeg" alt="apple" class="logo" />  </td>
+            <td id="AAPL"> Apple Inc(AAPL) </td>
+            <td id="AAPLD">$113.95</td>
+            <td id="AAPLR">$108.85(2.80%) </td>
+        </tr>
+        <tr  class="leaderBoardStyle">
+            <td><img id="Google" src="/image/Google.png" alt="Google"  class="logo"></td>
+            <td id="GOOG"> Google(GOOGL)</td>
+            <td id="GOOGD">$809.46</td>
+            <td id="GOOGR">$759(4.78%)</td>
+        </tr>
+        <tr  class="leaderBoardStyle">
+            <td><img id="twitter" src="/image/twitter.png" alt="twitter"  class="logo"/> </td>
+            <td id="TWTR"> Twitter Inc(TWTR)</td>
+            <td id="TWTRD">$19.65 </td>
+            <td id="TWTRR">$16.23(4.95%)</td>
+        </tr>
+        <tr class="leaderBoardStyle">
+            <td><img id="fb" src="/image/fb.png" alt="fb"  class="logo"/></td>
+            <td id="FB"> Facebook Inc(FB)</td>
+            <td id="FBD">$119.68 </td>
+            <td id="FBR">$121.30(12.45%)</td>
+        </tr>
+        <tr  class="leaderBoardStyle">
+            <td><img id="Amazon" src="/image/amazon-icon.png" alt="Amazon"  class="logo"/> </td>
+            <td id="AMZN"> Amazon.Com Inc(AMZN)</td>
+            <td id="AMZND">$768.22 </td>
+            <td id="AMZNR">$762.38(9.27%) </td>
+        </tr>
+    </table>
+
+    <div class="footer_page" id="footer_1"><br>
+        <p style="text-align:center;">&copy; 2016 Stock Analyst</p>
+    </div>
+    </div>
+    <!-- leader board div ends-->
+
+    <!-- currency div begins-->
+    <div id="currency_div" style="color:black">
+        <div style="font-weight:bold;background-color:#333333;color:#2b908f">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Base : <p id="base" style="display:inline-block;">  </p>
+            <p id="date_cu">Date :  </p>
+        </div>
+        <table id="currency_table" class="table table-hover">
+            <tr id="currency_row"  style="text-align:center;">
+                <th style="text-align:center">Country Code</th>
+                <th style="text-align:center">Currency Rate</th>
+            </tr>
+        </table>
+        <!-- footer -->
+        <div class="footer_page" id="footer_1"><br>
+            <p style="text-align:center;">&copy; 2016 Stock Analyst</p>
+        </div>
+    </div>
+    <!-- currency div ends-->
+
+    <!-- contact div begins-->
+    <div id="contact" style="color:black">
+        <h2>
+            Team Members
+        </h2>
+        <table class="table table-hover contactTable" >
+            <tbody>
+                <tr class="contactrow">
+                    <td>Nimish Unde</td>
+                </tr>
+                <tr  class="contactrow">
+                    <td>Varsha Pathak</td>
+                </tr>
+                <tr  class="contactrow">
+                    <td>Megha Sobhani</td>
+                </tr  class="contactrow">
+                <tr  class="contactrow">
+                    <td>Siddhi Suthar</td>
+                </tr>
+                <tr  class="contactrow">
+                    <td>Atul Prakash</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- footer -->
+        <div class="footer_page" id="footer_1">
+            <p style="text-align:center;">&copy; 2016 Stock Analyst</p>
+        </div>
+    </div>
+    <!-- contact div ends-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var companyCode = '';
+            var timerId = 0;
+            var timerStamp = 0;
+            var query = "";
+            var data = {};
+            var trick = 0;
+            var liveStockChart;
+            fetchData('AAPL', 'aaplContainer');
+            fetchData('GOOGL', 'googlContainer');
+            fetchData('INTC', 'intelContainer');
+
+                //search button on click
+                $("#search_button").click(function () {
+
+                    console.log("< --- Search button clicked -- >");
+                    if (timerStamp === 1) {
+                        clearInterval(timerId);
+                    }
+                    searched_company = $('#search').val();
+                    companyCode = $("#company option[value='" + $('#search').val() + "']").attr('data-companyCode');
+                    console.log("Company's short form is - " + companyCode);
+                    fetchData(companyCode, searchChart); //will fetch stock data from the server for appropriate company code
+
+                    if (companyCode != undefined) // check if value is valid
+                    {
+                     $("#main").hide();
+                     $('#homepage').hide();
+                     $("#newContainer").show();
+                     $("#footer_1").hide();
+                 }
+             });     
+
+
+                // modal window begins
+                var modal = $('#myModal');
+                $('#liveChartButton').click(function () {
+                    console.log("clicked live button!");
+                    modal.show();
+                    renderLiveChart(searched_company, companyCode);
+                });
+                $('#close_cross').click(function() {
+                    modal.hide();
+                });
+                // modal window ends
+
+
+        function fetchData(companyCode, containerID){
+            var query = 'https://marketdata.websol.barchart.com/getHistory.json?key=faa288c5d3a32496a78ffd1b59c2e349&symbol='+ companyCode + '&type=daily&startDate=20151125';
+            var liveQuery = 'https://marketdata.websol.barchart.com/getQuote.json?key=faa288c5d3a32496a78ffd1b59c2e349&symbols=' + companyCode;
+
+            var liveChartData = [];
+            var data;
+            var req = new XMLHttpRequest();
+            req.open("POST", "/api", true);
+            req.addEventListener("load", function () {
+                console.log("Done:", req.status);
+                        //console.log(req.responseText);
+
+                        data = JSON.parse(req.responseText);
+                        console.log(data.results[0].timestamp);
+                        console.log(Date.parse(data.results[0].timestamp));
+                        renderChart(data, containerID);
+                        
+                    });
+            req.send(query);
+        }
+
+        function requestData(companyCode) {
+
+            console.log(companyCode);
+            var baseURL = 'https://marketdata.websol.barchart.com/getQuote.json?key=faa288c5d3a32496a78ffd1b59c2e349&symbols=';
+            var query = baseURL + companyCode;
+            console.log(query);
+            var req = new XMLHttpRequest();
+            req.open("POST", "/api", true);
+            req.addEventListener("load", function () {
+                console.log("Done:", req.status);
+                console.log("checker" + req.responseText);
+                var liveData = JSON.parse(req.responseText);
+                var series = liveStockChart.series[0];
+                shift = series.data.length > 20; // shift if the series is longer than 20 add the point
+                                
+                var trickStamp = Date.parse(liveData.results[0].serverTimestamp) + trick;
+                liveStockChart.series[0].addPoint([trickStamp, liveData.results[0].lastPrice], true, shift);
+                trick += 2000;
+                console.log(trick);
+                // call it again after two seconds
+                setTimeout(function(){requestData(companyCode)}, 2000); 
+            });
+            req.send(query); 
+        }
+
+        function renderLiveChart(comanyName, companyCode){
+            liveStockChart = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'liveChartDisplay',
+                    defaultSeriesType: 'spline',
+                    events: {
+                        load: requestData(companyCode)                        
+                    }
+                },
+                title: {
+                    text: comanyName
+                },
+                xAxis: {
+                    type: 'datetime',
+                    tickPixelInterval: 150,
+                    maxZoom: 20 * 1000
+                },
+                yAxis: {
+                    /*minPadding: 0.2,
+                    maxPadding: 0.2,*/
+                    title: {
+                        text: 'Value',
+                        /*margin: 80*/
+                    }
+                },
+                series: [{
+                    name: 'Stock data',
+                    data: []
+                }]
+            });    
+        }
+
+        function renderChart(data, containerID){
+            var chartData = [];
+            for (i = 0; i < data.results.length; i++){
+                var tempArray = [Date.parse(data.results[i].timestamp), data.results[i].close];
+                chartData.push(tempArray);
+                    //chartData.push([Date.parse(data.results[i].timestamp), data.results[i].close]);
+                }
+
+                var stockChart = Highcharts.stockChart(containerID, {
+                   rangeSelector: {
+                    selected: 1
+                },
+                series: [{
+                    name: 'Stock prices',
+                        data: chartData // predefined JavaScript array
+                    }]
+                });
+            }
+
+
+        //currency - begins
+        $("#currency_button").click(function () {
+           $.get('/currency', function( data ) {
+            $("#leader_board").hide();
+            $("#newContainer").hide();
+            $("#main").hide();
+            $("#homepage").hide();
+            $("#stockmaps").hide();
+            $("#contact").hide();
+            $('#currency_div').show();
+            $("#footer_1").hide();
+            $('#currency_display').html(JSON.stringify(data));
+            var tr;
+            count = Object.keys(data.rates).length;
+            console.log(data.rates);
+            var rater = data.rates;
+            console.log(JSON.stringify(rater));
+            ol = $('#currency_row');
+            $('#base').html(data.base);
+            $('#date_cu').html(data.date);
+            for (var raterp in rater) {
+               var propName = raterp;
+               var propVal = rater[raterp];
+
+               tr = $('tr');
+            $('#currency_table').append(("<tr> <td>" + propName + "</td>")+("<td>" + propVal + "</td> + </tr>"));
+                }
+            });
+       });
+        //currency - ends
+
+        //display control on option selection below - behins
+        $("#leaderboard_button").click(function () {
+            console.log("Leader Board requested");
+            $("#leader_board").show();
+            $("#newContainer").hide();
+            $("#main").hide();
+            $('#homepage').hide();
+            $("#stockmaps").hide();
+            $("#contact").hide();
+            $("#currency_div").hide();
+            $("#footer_1").hide();
+        });
+
+        $("#home_button").click(function () {
+            console.log("Home Page requested");
+            $("#leader_board").hide();
+            $("#newContainer").hide();
+            $("#main").show();
+            $('#homepage').show();
+            $("#stockmaps").hide();
+            $("#contact").hide();
+            $("#currency_div").hide();
+            $("#footer_1").show();
+        });
+
+        $("#stockmaps_button").click(function () {
+            console.log("Maps Page requested");
+            window.location.href = "/map";
+        });
+
+        $("#contact_button").click(function () {
+            console.log("Home Page requested");
+            $("#leader_board").hide();
+            $("#newContainer").hide();
+            $("#main").hide();
+            $('#homepage').hide();
+            $("#stockmaps").hide();
+            $("#contact").show();
+            $("#currency_div").hide();
+            $("#footer_1").hide();
+
+        });
+        //display control on option selection below - ends
+     });
+
+    </script>
+
+    </body>
+
+    </html>

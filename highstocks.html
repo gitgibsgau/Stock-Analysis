@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stockcharts</title>
+	<!-- <script src="http://code.highcharts.com/highcharts.js"></script> -->
+	<script src="http://code.highcharts.com/stock/highstock.js"></script>
+	<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
+	<script src="http://code.highcharts.com/stock/js/themes/dark-unica.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+	<div id="stockChart" style="width:100%; height:300px;"></div>
+	<div id="liveChart" style="width:100%; height:300px;"></div>
+	<script>
+		$(function () { 
+			//dark-unica
+			//grid-light
+			var query = 'http://marketdata.websol.barchart.com/getHistory.json?key=faa288c5d3a32496a78ffd1b59c2e349&symbol=IBM&type=daily&startDate=20151125';
+			var liveQuery = 'http://marketdata.websol.barchart.com/getQuote.json?key=faa288c5d3a32496a78ffd1b59c2e349&symbols=IBM';
+			var chartData = [];
+			var liveChartData = [];
+			var data, liveData;
+			var liveStockChart;
+			var trick = 0;
+			var req = new XMLHttpRequest();
+            req.open("POST", "/api", true);
+            req.addEventListener("load", function () {
+                console.log("Done:", req.status);
+                //console.log(req.responseText);
+
+                data = JSON.parse(req.responseText);
+                console.log(data.results[0].timestamp);
+                console.log(Date.parse(data.results[0].timestamp));
+                renderChart();
+                console.log(chartData);
+            });
+            req.send(query);
+
+            function requestData() {
+            	
+			    var req = new XMLHttpRequest();
+                req.open("POST", "/api", true);
+                req.addEventListener("load", function () {
+                        console.log("Done:", req.status);
+                        //console.log(req.responseText);
+                        liveData = JSON.parse(req.responseText);
+                        var series = liveStockChart.series[0],
+			            shift = series.data.length > 20; // shift if the series is longer than 20 add the point
+			            
+			            var trickStamp = Date.parse(liveData.results[0].serverTimestamp) + trick;
+			            liveStockChart.series[0].addPoint([trickStamp, liveData.results[0].lastPrice], true, shift);
+			            trick += 2000;
+			            console.log(trick);
+			            // call it again after two seconds
+			            setTimeout(requestData, 2000); 
+                });
+                req.send(liveQuery); 
+			}
+
+            function renderLiveChart(){
+            	liveStockChart = new Highcharts.Chart({
+			        chart: {
+			            renderTo: 'liveChart',
+			            defaultSeriesType: 'spline',
+			            events: {
+			                load: requestData
+			            }
+			        },
+			        title: {
+			            text: 'Live random data'
+			        },
+			        xAxis: {
+			            type: 'datetime',
+			            tickPixelInterval: 150,
+			            maxZoom: 20 * 1000
+			        },
+			        yAxis: {
+			            minPadding: 0.2,
+			            maxPadding: 0.2,
+			            title: {
+			                text: 'Value',
+			                margin: 80
+			            }
+			        },
+			        series: [{
+			            name: 'Random data',
+			            data: []
+			        }]
+			    });    
+            }
+
+            function renderChart(){
+            	for (i = 0; i < data.results.length; i++){
+            		var tempArray = [Date.parse(data.results[i].timestamp), data.results[i].close];
+            		chartData.push(tempArray);
+            		//chartData.push([Date.parse(data.results[i].timestamp), data.results[i].close]);
+            	}
+
+            	var stockChart = Highcharts.stockChart('stockChart', {
+			         rangeSelector: {
+			            selected: 1
+			         },
+			         series: [{
+			            name: 'Stock prices',
+			            data: chartData // predefined JavaScript array
+			         }]
+		    	});
+            }
+		    renderLiveChart();
+		});
+	</script>
+</body>
+</html>
